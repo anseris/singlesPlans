@@ -1,0 +1,70 @@
+<nz-layout class="app-layout">
+    <nz-sider class="menu-sidebar"
+      nzCollapsible
+      nzWidth="256px"
+      nzBreakpoint="md"
+      [(nzCollapsed)]="isCollapsed"
+      [nzTrigger]="null">
+      <div class="sidebar-logo">
+        <a href="https://ng.ant.design/" target="_blank">
+          <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+          <h1>Singles Plans 2</h1>
+        </a>
+      </div>
+      <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+        <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/logado/inicio">Inicio</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+                <a routerLink="/logado/usuarios">Usuarios</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a>Workplace</a>
+            </li>
+          </ul>
+        </li>
+        <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a>Basic Form</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-layout>
+      <nz-header>
+        <div class="app-header flex justify-content-between align-items-center">
+            <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+                <span class="trigger"
+                 nz-icon
+                 [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+                ></span>
+            </span>
+            <!-- <button class="mr-5" (click)="cerrarSesion()" nz-button nzType="default">Cerrar sesion</button> -->
+              <nz-avatar-group nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="'bottomCenter'" class="mr-5">
+                <!-- <nz-avatar nzIcon="user" nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar> -->
+                <nz-avatar style="background-color: #1890ff" nzText={{nicKnameAvatar}}></nz-avatar>
+                <span nz-icon nzType="caret-down" nzTheme="outline"></span>
+                <nz-dropdown-menu #menu="nzDropdownMenu">
+                  <ul nz-menu>
+                    <li (click)="showEditUser()" nz-menu-item>Editar perfil</li>
+                    <li nz-menu-item>2nd menu item length</li>
+                    <li (click)="cerrarSesion()" nz-menu-item>Cerrar sesión</li>
+                  </ul>
+                </nz-dropdown-menu>
+              </nz-avatar-group>
+        </div>
+      </nz-header>
+      <nz-content>
+        <div class="inner-content">
+          <router-outlet></router-outlet>
+        </div>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
+
+  <app-edit-profile *ngIf="showDrawerProfile"></app-edit-profile>
+ 

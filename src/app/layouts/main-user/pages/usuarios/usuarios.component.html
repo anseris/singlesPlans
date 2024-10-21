@@ -1,0 +1,47 @@
+<div class="flex justify-content-between">
+    <div class="imput">
+        <input (keyup)="searchUser()" nz-input placeholder="Buscar por nombre" [(ngModel)]="value" type="text" />        
+    </div>     
+</div>
+<div class="p-5">
+    <nz-table #basicTable [nzData]="listOfUser">
+        <thead>
+          <tr>
+            <th>Nick</th>
+            <th>Email</th>
+            <th>Password</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (data of listOfUser; track data) {
+            <tr>
+              <td>{{ data.loginUser.nickName }}</td>
+              <td>{{ data.loginUser.email }}</td>
+              <td>{{ data.loginUser.password }}</td>
+              <td>
+                <a
+                    nz-popconfirm
+                    nzPopconfirmTitle="Seguro que desea eliminar el usuario?"
+                    nzPopconfirmPlacement="bottom"
+                    (nzOnConfirm)="deleteUser(data._id || '')"
+                >
+                    Delete
+                </a>
+                <button nz-button nzType="primary" (click)="showModalEdit(data)">Editar</button> 
+              </td>
+            </tr>
+          }
+        </tbody>
+      </nz-table>
+</div>
+
+
+<div>
+    <nz-modal [(nzVisible)]="isVisibleEdit" nzTitle="Editar" (nzOnCancel)="handleCancelEdit()" (nzOnOk)="handleOkEdit()">
+        <ng-container *nzModalContent>
+            <input nz-input  [(ngModel)]="form.nickName" type="text" /> 
+            <input class="mt-2" nz-input [(ngModel)]="form.email" type="text" />
+            <input class="mt-2" nz-input [(ngModel)]="form.password" type="text" />
+        </ng-container>
+    </nz-modal>
+</div>

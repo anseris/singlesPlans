@@ -1,0 +1,62 @@
+<!-- <div>
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="Inicia sesión" (nzOnCancel)="cancelar()" (nzOnOk)="login()">
+        <ng-container *nzModalContent>
+            <form [formGroup]="myForm">
+                <input [nzStatus]="(initErrorForm && mail?.errors)? 'error' : ''" class="mt-2" nz-input placeholder="Email" formControlName="email" type="text" />
+                <div class="flex flex-column">
+                    @if (initErrorForm && mail?.errors) {
+                        <small class="error-form">Debe ingresar un Email</small>
+                        <small class="error-form">El Email debe estar en formato correcto</small>
+                    }
+
+                </div>
+                <nz-input-group [nzStatus]="(initErrorForm && pass?.errors)? 'error' : ''" class="mt-2" nzPrefixIcon="lock">
+                    <input  nz-input placeholder="Password" formControlName="password" type="text" />
+                </nz-input-group>
+                <div class="flex flex-column">
+                    @if (initErrorForm && pass?.errors) {
+                        <small class="error-form">Debe ingresar una contraseña</small>
+                        <small class="error-form">La contraseña tiene que tener minimo 4 digitos</small>
+                    }
+                </div> 
+        </form>
+        </ng-container>
+    </nz-modal>
+</div> -->
+
+<div>
+    <nz-modal class="modal-login" [(nzVisible)]="isVisible" nzTitle="Inicia sesión" (nzOnCancel)="cancelar()" (nzOnOk)="login()">
+        <ng-container *nzModalContent>
+            <form nz-form [formGroup]="myForm" class="login-form" (ngSubmit)="login()">
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Please input your email!">
+                    <nz-input-group nzPrefixIcon="user">
+                      <input type="text" nz-input formControlName="email" placeholder="email" />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Please input your Password!">
+                    <nz-input-group nzPrefixIcon="lock">
+                      <input type="password" nz-input formControlName="password" placeholder="Password" />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+                <div nz-row class="login-form-margin">
+                  <div nz-col [nzSpan]="12">
+                    <label nz-checkbox formControlName="remember">
+                      <span>Remember me</span>
+                    </label>
+                  </div>
+                  <div nz-col [nzSpan]="12">
+                    <a class="login-form-forgot">Forgot password</a>
+                  </div>
+                </div>
+                <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+                Or
+                <a>register now!</a>
+              </form>
+
+        </ng-container>
+    </nz-modal>
+</div>

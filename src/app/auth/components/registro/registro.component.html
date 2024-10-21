@@ -1,0 +1,30 @@
+<div class="flex w-screen h-screen justify-content-center align-items-center">
+    <div class="cont border-round-md bg-white p-5">
+        <form [formGroup]="myForm">
+            <nz-input-group [nzStatus]="(initErrorForm && nick?.errors)? 'error' : ''" nzPrefixIcon="user">
+                <input  nz-input placeholder="Nick" formControlName="nickName" type="text" /> 
+            </nz-input-group>
+            @if (initErrorForm && nick?.errors) {
+                <small class="error-form">Debe ingresar un Alias</small>
+            }
+            <input [nzStatus]="(initErrorForm && mail?.errors)? 'error' : ''" class="mt-2" nz-input placeholder="Email" formControlName="email" type="text" />
+            <div class="flex flex-column">
+                @if (initErrorForm && mail?.errors) {
+                    <small class="error-form">Debe ingresar un Email</small>
+                    <small class="error-form">El Email debe estar en formato correcto</small>
+                }
+
+            </div>
+            <nz-input-group [nzStatus]="(initErrorForm && pass?.errors)? 'error' : ''" class="mt-2" nzPrefixIcon="lock">
+                <input  nz-input placeholder="Password" formControlName="password" type="text" />
+            </nz-input-group>
+            <div class="flex flex-column">
+                @if (initErrorForm && pass?.errors) {
+                    <small class="error-form">Debe ingresar una contraseña</small>
+                    <small class="error-form">La contraseña tiene que tener minimo 4 digitos</small>
+                }
+            </div> 
+            <button (click)="registrar()" class="w-full mt-3" nz-button nzType="primary">Ingresar</button>
+        </form>
+    </div>
+</div>

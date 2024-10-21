@@ -1,0 +1,48 @@
+<div class="flex w-screen h-screen justify-content-center align-items-center">
+    <div class="cont border-round-md bg-white p-5">
+        <form nz-form [formGroup]="myForm" class="login-form" (ngSubmit)="login()">
+            <nz-form-item>
+                <nz-input-group [nzStatus]="(initErrorForm && mail?.errors)? 'error' : ''" nzPrefixIcon="user">
+                  <input type="text" nz-input formControlName="email" placeholder="email" />
+                </nz-input-group>
+                <div class="flex flex-column">
+                    @if (initErrorForm && mail?.errors) {
+                        <small class="error-form">Debe ingresar un Email</small>
+                        <small class="error-form">El Email debe estar en formato correcto</small>
+                    }
+                </div>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-input-group [nzStatus]="(initErrorForm && mail?.errors)? 'error' : ''" nzPrefixIcon="lock" [nzSuffix]="suffixTemplate">
+                  <input [type]="passwordVisible ? 'text' : 'password'" nz-input formControlName="password" placeholder="Password" />
+                </nz-input-group>
+                <ng-template #suffixTemplate>
+                    <span
+                      nz-icon
+                      [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                      (click)="passwordVisible = !passwordVisible"
+                    ></span>
+                  </ng-template>
+                  <div class="flex flex-column">
+                    @if (initErrorForm && pass?.errors) {
+                        <small class="error-form">Debe ingresar una contraseña</small>
+                        <small class="error-form">La contraseña tiene que tener minimo 4 digitos</small>
+                    }
+                </div> 
+            </nz-form-item>
+            <div nz-row class="login-form-margin">
+              <!-- <div nz-col [nzSpan]="12">
+                <label nz-checkbox formControlName="remember">
+                  <span>Remember me</span>
+                </label>
+              </div> -->
+              <div nz-col [nzSpan]="12">
+                <a class="login-form-forgot">Forgot password</a>
+              </div>
+            </div>
+            <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+            Or
+            <a>register now!</a>
+          </form>
+    </div>
+</div>

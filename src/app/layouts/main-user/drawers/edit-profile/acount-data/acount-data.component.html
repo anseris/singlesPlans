@@ -1,0 +1,8 @@
+ <form [formGroup]="myFormAccount">
+    <input class="mt-2" nz-input  placeholder="Titular de la cuenta" formControlName="titularCard" type="text" /> 
+    <input class="mt-2" nz-input  placeholder="IBAN"  formControlName="IBAN" type="text" />  
+    <input class="mt-2" nz-input  placeholder="code"  formControlName="code" type="text" />  
+    <nz-date-picker class="mt-2 w-full"  formControlName="caducyDate" (ngModelChange)="onChange($event)"></nz-date-picker>
+    <button nz-button nzType="primary" (click)="saveAcountForm()" >Guardar</button>
+                                
+</form>

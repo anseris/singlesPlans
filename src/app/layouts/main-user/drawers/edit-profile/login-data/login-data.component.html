@@ -1,0 +1,43 @@
+
+<div *ngIf="!showModuleEdit">
+    <div class="flex justify-content-end flex-wrap">
+        <span nz-icon nzType="edit" nzTheme="outline" (click)="changeshowModuleEdit()"></span>
+    </div>
+    <div  class="flex justify-content-start flex-wrap">
+        
+        <div class="flex align-items-center justify-content-center m-2">
+            <label class="font-bold" for="">Alias:</label> <span class="ml-2">{{userLogin.nickName}}</span>
+        </div>
+        <div class="flex align-items-center justify-content-center m-2">
+            <label class="font-bold" for="">email:</label> <span class="ml-2">{{userLogin.email}}</span>
+        </div>
+        <div class="flex align-items-center justify-content-center m-2">
+            <label class="font-bold" for="">Contraseña:</label> <span class="ml-2">{{userLogin.password}}</span>
+        </div>      
+    </div>
+</div>
+<div *ngIf="showModuleEdit">
+    <form [formGroup]="myFormLogin">
+        <input class="mt-2" placeholder="Alias" [nzStatus]="(initErrorForm && alias?.errors)? 'error' : ''"  nz-input formControlName="nickName" type="text" />
+        @if (initErrorForm && alias?.errors) {
+            <small class="error-form">Debe ingresar un Alias</small>
+        } 
+        <input class="mt-2" placeholder="Email" [nzStatus]="(initErrorForm && mail?.errors)? 'error' : ''"  nz-input formControlName="email" type="text" />
+        <div class="flex flex-column">
+            @if (initErrorForm && mail?.errors) {
+                <small class="error-form">Debe ingresar un Email</small>
+                <small class="error-form">El Email debe estar en formato correcto</small>
+            }
+    
+        </div>
+        <input class="mt-2" placeholder="Contraseña" [nzStatus]="(initErrorForm && pass?.errors)? 'error' : ''"  nz-input formControlName="password" type="text" />
+        <div class="flex flex-column">
+            @if (initErrorForm && pass?.errors) {
+                <small class="error-form">Debe ingresar una contraseña</small>
+                <small class="error-form">La contraseña tiene que tener minimo 4 digitos</small>
+            }
+        </div>
+        <button nz-button nzType="primary" (click)="saveLoginForm()" >Guardar</button>
+    
+    </form>
+</div>

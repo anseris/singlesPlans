@@ -1,0 +1,37 @@
+ 
+    <nz-drawer [nzVisible]="visible" [nzTitle]="'Perfil'" [nzWidth]="640" [nzClosable]="false" (nzOnClose)="close()">
+        <ng-container *nzDrawerContent>
+            <app-avatar-edit></app-avatar-edit>
+            <nz-collapse [nzExpandIconPosition]="'start'">
+                @for (panel of panels; track panel) {
+                  <nz-collapse-panel
+                    [nzHeader]="panel.name"
+                    [nzActive]="panel.active"
+                    [nzExtra]="extraTpl"
+                    [nzDisabled]="panel.disabled"
+                  >
+                  @if(panel.type === 'loginData') {
+                    <app-login-data [(loginForm)]="loginForm" [(nameAvatar)]="nicKnameAvatar" [(id)]="id"></app-login-data>
+                    
+                } @else if(panel.type === 'personalData') {
+                  <app-personal-data [(personalForm)]="personalForm"></app-personal-data>
+                   
+                } @else {
+                  <app-acount-data [(acountForm)]="acountForm"></app-acount-data>
+                }
+                  </nz-collapse-panel>
+                }
+              </nz-collapse>
+              <ng-template #extraTpl>
+                <!-- You can use stopPropagation if you don't want the panel to toggle -->
+                <span nz-icon nzType="setting" (click)="$event.stopPropagation()"></span>
+              </ng-template>
+              <br />
+            
+                <button nz-button nzType="primary" (click)="saveProfile()" >Guardar</button>
+
+               
+             
+        </ng-container>
+        
+    </nz-drawer>

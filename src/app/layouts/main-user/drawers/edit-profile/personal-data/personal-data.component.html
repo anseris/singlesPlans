@@ -1,0 +1,11 @@
+ <form [formGroup]="myFormPersonal">
+    <input class="mt-2" nz-input  placeholder="Nombre" formControlName="name" type="text" /> 
+    <input class="mt-2" nz-input  placeholder="Apellidos"  formControlName="secondName" type="text" />  
+    <nz-date-picker class="mt-2 w-full"  formControlName="birthDate" (ngModelChange)="onChange($event)"></nz-date-picker>
+    <nz-radio-group class="mt-2 ml-3"  formControlName="gender">
+        <label nz-radio nzValue="Hombre">Hombre</label>
+        <label nz-radio nzValue="Mujer">Mujer</label>
+    </nz-radio-group>
+    <input class="mt-2" nz-input  placeholder="Teléfono"  formControlName="phone" type="text" />
+    <button nz-button nzType="primary" (click)="savePersonalForm()" >Guardar</button>
+</form>
