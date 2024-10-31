@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ILoginUser, ISession, IUserSession } from '../interfaces/login.interface';
+import { ILoginUser, ISession, IUser, IUserSession } from '../interfaces/login.interface';
 import { ENDPOINTS } from '../../share/constant/endpoints.constant';
 @Injectable({
   providedIn: 'root'

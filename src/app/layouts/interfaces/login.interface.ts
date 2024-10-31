@@ -21,7 +21,6 @@ export interface IUserSession{
     users: {
         _id?: string,
         nickName: string,
-        secondName?: string,
         email: string,
         password: string,
     }

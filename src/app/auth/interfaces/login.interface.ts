@@ -14,7 +14,7 @@ export interface IUser{
     _id?: string,
     nickName: string,
     email: string,
-    password: string,
+    password: string
 }
 
 export interface IUserSession{
@@ -23,7 +23,7 @@ export interface IUserSession{
         nickName: string,
         secondName?: string,
         email: string,
-        password: string,
+        password: string;
     }
    
 }
@@ -32,3 +32,8 @@ export interface IUserCreated{
     success: boolean,
     msg: string
 }
+
+export interface IRecoverPass{
+    email: string
+}
+

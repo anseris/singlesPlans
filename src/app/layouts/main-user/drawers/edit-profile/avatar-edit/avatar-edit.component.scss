@@ -1,0 +1,69 @@
+.input-file{
+    position: relative;
+    .custon-avatar{
+        // position: absolute;
+        width: 250ppx;
+        height: 250px;
+        cursor: pointer;
+        background-color: brown;
+        text-align: center;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+.avatar-file{
+    display: none;
+}
+.custon-avatar-file{
+    display:flex;
+    color: #fff;
+    border-color: #1890ff;
+    background: #1890ff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, .045);
+    cursor: pointer;
+    line-height: 1.5715;
+    position: relative;
+    font-weight: 400;
+    border: 1px solid #d9d9d9;
+    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    -webkit-user-select: none;
+    user-select: none;
+    padding: 4px 15px;
+    border-radius: 2px;
+
+}
+
+.icon-edit{
+
+}
+
+.text-edit{
+
+}
+
+.icon-upload{
+    border: 5px solid #E2F1E7;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    span{
+        font-size: 200px;
+        color: gray;
+
+    }
+}
+
+.image-upload{
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+    border: 5px solid #E2F1E7;
+    border-radius: 50%;
+}
+
+svg {
+    height: 32px;
+}

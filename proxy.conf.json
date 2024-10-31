@@ -16,5 +16,17 @@
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true
+    },
+    "/loginuser/updatePassword/*": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/send-email": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
     }
 }

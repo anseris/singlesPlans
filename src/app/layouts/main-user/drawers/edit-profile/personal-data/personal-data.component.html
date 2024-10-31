@@ -1,11 +1,63 @@
- <form [formGroup]="myFormPersonal">
-    <input class="mt-2" nz-input  placeholder="Nombre" formControlName="name" type="text" /> 
-    <input class="mt-2" nz-input  placeholder="Apellidos"  formControlName="secondName" type="text" />  
-    <nz-date-picker class="mt-2 w-full"  formControlName="birthDate" (ngModelChange)="onChange($event)"></nz-date-picker>
-    <nz-radio-group class="mt-2 ml-3"  formControlName="gender">
-        <label nz-radio nzValue="Hombre">Hombre</label>
-        <label nz-radio nzValue="Mujer">Mujer</label>
-    </nz-radio-group>
-    <input class="mt-2" nz-input  placeholder="Teléfono"  formControlName="phone" type="text" />
-    <button nz-button nzType="primary" (click)="savePersonalForm()" >Guardar</button>
-</form>
+<div *ngIf="!showModuleEdit">
+    <div class="flex justify-content-end flex-wrap">
+        <span nz-icon nzType="edit" class="cursor-pointer fs-20 color-4" nzTheme="outline" (click)="changeshowModuleEdit()"></span>
+    </div>
+    <div class="grid">
+        
+        <div class="col-6">
+            <label class="font-bold color-4" for="">Nombre:</label> <span class="ml-2">{{nombre?.value !== '' ? nombre?.value: 'No hay datos'}}</span>
+        </div>
+        <div class="col-6">
+            <label class="font-bold color-4" for="">Apellidos:</label> <span class="ml-2">{{apellidos?.value !== '' ? apellidos?.value: 'No hay datos'}}</span>
+        </div>
+        <div class="col-6">
+            <label class="font-bold color-4" for="">Fecha de Nacimiento:</label> <span class="ml-2">{{fecha?.value !== '' ? fecha?.value: 'No hay datos'}}</span>
+        </div>  
+        <div class="col-6">
+            <label class="font-bold color-4" for="">Género:</label> <span class="ml-2">{{genero?.value !== '' ? genero?.value: 'No hay datos'}}</span>
+        </div> 
+        <div class="col-6">
+            <label class="font-bold color-4" for="">Teléfono:</label> <span class="ml-2">{{telefono?.value !== '' ? telefono?.value: 'No hay datos'}}</span>
+        </div>     
+    </div>
+</div> 
+<div *ngIf="showModuleEdit">
+    <form [formGroup]="myFormPersonal">
+        <div class="formgrid grid">
+            <div class="field col-6">                
+                <label  class="" for=""> Nombre</label>
+                <nz-form-item >
+                    <nz-input-group>
+                        <input (keyup)="savePersonalForm()" nz-input  placeholder="Nombre" formControlName="name" type="text" />                         
+                    </nz-input-group>
+                </nz-form-item>
+            </div>
+            <div class="field col-6">
+                <label  class="" for=""> Apellidos</label>
+                <nz-form-item >
+                    <nz-input-group>
+                        <input  nz-input  placeholder="Apellidos"  formControlName="secondName" type="text" />                         
+                    </nz-input-group>
+                </nz-form-item> 
+            </div>
+            <div class="field col-6">
+                <label  class="" for="">Fecha de Nacimiento</label>
+                <nz-date-picker class="w-full"  formControlName="birthDate" (ngModelChange)="onChange($event)"></nz-date-picker>
+            </div>
+            <div class="field col-6">
+                <label  class="" for="">Teléfono</label>
+                <nz-form-item >
+                    <nz-input-group>
+                        <input (keyup)="savePersonalForm()" nz-input  placeholder="Teléfono"  formControlName="phone" type="text" />                         
+                    </nz-input-group>
+                </nz-form-item>
+            </div>
+            <div class="field col-6">
+                <nz-radio-group class="mt-2 ml-3" (keyup)="savePersonalForm()"  formControlName="gender">
+                    <label class="color-4" nz-radio nzValue="Hombre">Hombre</label>
+                    <label class="color-4" nz-radio nzValue="Mujer">Mujer</label>
+                </nz-radio-group>
+            </div>
+        </div>
+   </form>
+</div>

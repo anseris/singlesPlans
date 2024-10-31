@@ -8,6 +8,10 @@ export const ENDPOINTS = {
     login: '/loginuser/login',
     registerUser: '/loginuser/register',
     getAndCheckUser: '/loginuser/getAndCheckUser',
-    updateLoginUser: '/loginuser'
+    updateLoginUser: '/loginuser',
+    recoverPass: '/loginuser/recover',
+    sendMail: '/send-email',
+    updatePassword: '/loginuser/updatePassword',
+
     
 }

@@ -1,30 +1,78 @@
-<div class="flex w-screen h-screen justify-content-center align-items-center">
-    <div class="cont border-round-md bg-white p-5">
-        <form [formGroup]="myForm">
-            <nz-input-group [nzStatus]="(initErrorForm && nick?.errors)? 'error' : ''" nzPrefixIcon="user">
-                <input  nz-input placeholder="Nick" formControlName="nickName" type="text" /> 
-            </nz-input-group>
-            @if (initErrorForm && nick?.errors) {
-                <small class="error-form">Debe ingresar un Alias</small>
-            }
-            <input [nzStatus]="(initErrorForm && mail?.errors)? 'error' : ''" class="mt-2" nz-input placeholder="Email" formControlName="email" type="text" />
-            <div class="flex flex-column">
-                @if (initErrorForm && mail?.errors) {
-                    <small class="error-form">Debe ingresar un Email</small>
-                    <small class="error-form">El Email debe estar en formato correcto</small>
-                }
-
-            </div>
-            <nz-input-group [nzStatus]="(initErrorForm && pass?.errors)? 'error' : ''" class="mt-2" nzPrefixIcon="lock">
-                <input  nz-input placeholder="Password" formControlName="password" type="text" />
-            </nz-input-group>
-            <div class="flex flex-column">
-                @if (initErrorForm && pass?.errors) {
-                    <small class="error-form">Debe ingresar una contraseña</small>
-                    <small class="error-form">La contraseña tiene que tener minimo 4 digitos</small>
-                }
-            </div> 
-            <button (click)="registrar()" class="w-full mt-3" nz-button nzType="primary">Ingresar</button>
-        </form>
+<div class="flex justify-content-center w-full bg-1 h-full">
+  
+    <div class="flex justify-content-center align-items-center w-6 bg-1 h-full" >
+     
+      <div class="w-7">
+        <div class="flex justify-content-center mt-2">
+          <img [attr.src]="'assets/img/logo_medio.png'" alt="">
+        </div>
+        <div class="flex justify-content-center mt-2 color-4 fs-30" >
+          <p>Regístrate</p>
+        </div>
+            <form [formGroup]="myForm">
+                <nz-form-item>
+                    <nz-input-group [nzStatus]="(initErrorForm && nick?.errors)? 'error' : ''" nzPrefixIcon="user">
+                        <input  nz-input (keyup)="showCheck()"  placeholder="Nick" formControlName="nickName" type="text" /> 
+                        @if (initCheckForm && !nick?.errors) {
+                            <span nz-icon nzType="check" class="color-3" nzTheme="outline"></span>  
+                        }   
+                    </nz-input-group>
+                    @if (initErrorForm && nick?.errors) {
+                        <small class="color-red"><span nz-icon nzType="warning" class="mr-2" nzTheme="outline"></span>Debe ingresar un Alias</small>
+                    }
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-input-group [nzStatus]="(initErrorForm && mail?.errors)? 'error' : ''" class="color-4" nzPrefixIcon="mail">
+                        <input type="text" (keyup)="showCheck()" nz-input formControlName="email" placeholder="Email" /> 
+                        @if (initCheckForm && !mail?.errors) {
+                        <span nz-icon nzType="check" class="color-3" nzTheme="outline"></span>  
+                        }                   
+                                        
+                    </nz-input-group>
+                    <div class="flex flex-column">
+                        @if (initErrorForm && mail?.errors) {
+                            <small class="color-red"><span nz-icon nzType="warning" class="mr-2" nzTheme="outline"></span>Debe ingresar un Email</small>
+                            <small class="color-red"><span nz-icon nzType="warning" class="mr-2" nzTheme="outline"></span>El Email debe estar en formato correcto</small>
+                        }
+                    </div>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-input-group [nzStatus]="(initErrorForm && pass?.errors)? 'error' : ''" nzPrefixIcon="lock" [nzSuffix]="suffixTemplate1">
+                        <input [type]="passwordVisible ? 'text' : 'password'" nz-input formControlName="password" placeholder="Contraseña" />
+                    </nz-input-group>
+                    <ng-template #suffixTemplate1>
+                        <span
+                            nz-icon
+                            [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                            (click)="passwordVisible = !passwordVisible"
+                        ></span>
+                        </ng-template>
+                        
+                        <div class="flex flex-column">
+                        @if (initErrorForm && pass?.errors) {
+                            <small class="color-red"><span nz-icon nzType="warning" class="mr-2" nzTheme="outline"></span>Debe ingresar una contraseña</small>
+                            <small class="color-red"><span nz-icon nzType="warning" class="mr-2" nzTheme="outline"></span>La contraseña tiene que tener minimo 4 digitos</small>
+                        }
+                    </div> 
+                </nz-form-item>
+              
+              
+              <div class="flex justify-content-center mt-2">
+                <button nz-button class="ant-btn-secundary" (click)="registrar()">Registrarse</button>
+              </div>
+              <div nz-row class="flex justify-content-end w-full mt-4 fs-20">
+                <div nz-col [nzSpan]="12" class="flex align-items-end justify-content-end">
+                  <a class="login-form-forgot color-4" (click)="backToHome()">Volver a Inicio <span nz-icon nzType="arrow-right" class="ml-3" nzTheme="outline"></span></a>
+                </div>
+              </div>
+              
+            </form>
+      </div>
     </div>
-</div>
+    <div class="flex justify-content-center align-items-center w-6 bg-4">
+      <div class="cont-img-login">
+        <img [attr.src]="'assets/img/logo_oscuro.png'" class="img-login" alt="">
+      </div>
+      
+    </div>
+  </div>

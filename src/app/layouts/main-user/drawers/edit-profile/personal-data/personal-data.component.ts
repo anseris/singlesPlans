@@ -5,6 +5,9 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NgIf } from '@angular/common';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 @Component({
   selector: 'app-personal-data',
@@ -15,7 +18,10 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
     NzInputModule,
     NzButtonModule,
     NzDatePickerModule,
-    NzRadioModule
+    NzRadioModule,
+    NzIconModule,
+    NzFormModule,
+    NgIf 
   ],
   templateUrl: './personal-data.component.html',
   styleUrl: './personal-data.component.scss'
@@ -25,6 +31,7 @@ export class PersonalDataComponent {
   userSession = {};  
   myFormPersonal!: FormGroup;
   initErrorForm: boolean = false;
+  showModuleEdit: boolean = false;
   personalForm = model()
 
   constructor(
@@ -55,6 +62,7 @@ export class PersonalDataComponent {
 
   onChange(result: Date): void {
     console.log('onChange: ', result);
+    this.savePersonalForm()
   }
 
   getUserData() {
@@ -69,24 +77,23 @@ export class PersonalDataComponent {
             gender: user.personalData.gender,
             phone: user.personalData.phone
           });
-          this.personalForm.set(this.myFormPersonal.value)
-
-        }
-        
-      }
-      
-      
-    })
-   
-
+          this.personalForm.set(this.myFormPersonal)
+        }        
+      }      
+    });
   }
 
   savePersonalForm(){
-
-    this.personalForm.set(this.myFormPersonal.value)
+    if(this.myFormPersonal.valid && this.showModuleEdit){
+      this.personalForm.set(this.myFormPersonal)
+    }
   }
 
- 
+  changeshowModuleEdit(){
+    this.showModuleEdit = true
+  }
+
+  
   get nombre() { return this.myFormPersonal?.get('name')}
   get apellidos() { return this.myFormPersonal?.get('secondName')}
   get fecha() { return this.myFormPersonal?.get('birthDate')}

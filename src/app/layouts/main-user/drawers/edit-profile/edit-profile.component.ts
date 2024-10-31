@@ -89,42 +89,21 @@ export class EditProfileComponent {
   }
 
 
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-  //   //Add '${implements OnChanges}' to the class.
-  //   console.log('onChange: ', changes);
-    
-  // }
 
-  // onChange(){
-  //   console.log('onChange: ', this.loginForm);
-  // }
-
-  
-
-  // prueba(){
-  //   const payload: IFullUser = {
-  //     idLogin: this.id || '',
-  //     loginUser: this.loginForm,
-  //     personalData: this.personalForm,
-  //     accountData: this.acountForm
-
-  //   }
-  //   // this.updateUser(payload)
-  // }
 
   saveProfile(){
+
     // this.initErrorForm = true;
-    // if(this.myFormLogin.valid && this.myFormPersonal.valid && this.myFormAccount.valid){
+    if(this.loginForm.valid && this.personalForm.valid && this.acountForm.valid){
       this.updateUser()
       // this.isVisibleEdit = false;
-    // }
+    }
   }
  
 
   updateUser() {
 
-    this.registroService.updateUser(this.loginForm, this.id).subscribe(_=>{
+    this.registroService.updateUser(this.loginForm.value, this.id).subscribe(_=>{
       // this.message.success('Usuario editado');
       this.changeSession();
       this.updateFullUser();
@@ -153,9 +132,9 @@ export class EditProfileComponent {
         const session: ISession = JSON.parse(localStorage.getItem(SESSION.localStorage) || '');
         if (session.user){
           const user = session.user;
-          user.nickName = this.loginForm.nickName;
-          user.email = this.loginForm.email;
-          user.password = this.loginForm.password;
+          user.nickName = this.loginForm.value.nickName;
+          user.email = this.loginForm.value.email;
+          user.password = this.loginForm.value.password;
 
           localStorage.setItem(SESSION.localStorage, JSON.stringify(session))
         }
@@ -166,9 +145,9 @@ export class EditProfileComponent {
   getPayload(){
     return {
       idLogin: this.id || '',
-      loginUser: this.loginForm,
-      personalData: this.personalForm,
-      accountData: this.acountForm
+      loginUser: this.loginForm.value,
+      personalData: this.personalForm.value,
+      accountData: this.acountForm.value
     }
    }
 

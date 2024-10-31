@@ -6,8 +6,11 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { RegistroService } from '../../services/registro.service';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
-import { ILoginUser, ISession, IUserCreated, IUserSession } from '../../interfaces/login.interface';
+import { ILoginUser, ISession, IUser, IUserCreated, IUserSession } from '../../interfaces/login.interface';
 import { SESSION } from '../../../share/constant/session.constant';
+import { IFullUser } from '../../../layouts/interfaces/users.interface';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @Component({
   selector: 'app-registro',
@@ -16,14 +19,17 @@ import { SESSION } from '../../../share/constant/session.constant';
     FormsModule,
     ReactiveFormsModule,
     NzInputModule,
+    NzFormModule,
     NzButtonModule,
-    NzModalModule
+    NzIconModule,
   ],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.scss'
 })
 export class RegistroComponent {
   initErrorForm: boolean = false;
+  initCheckForm: boolean = false;
+  passwordVisible: boolean = false;
 
   myForm!: FormGroup;
 
@@ -97,13 +103,12 @@ export class RegistroComponent {
 
   createUser(user: IUserSession ){
     const userForm = user.users
-    const payload = {
+    const payload: IFullUser = {
       _id: userForm._id || '',
       idLogin: userForm._id || '',
       loginUser: {
           nickName: userForm.nickName,
-          email: userForm.email,
-          password: userForm.password
+          email: userForm.email
       },
       personalData: {
           image: '',
@@ -127,6 +132,14 @@ export class RegistroComponent {
         this.router.navigate(['/logado'])
       }
     })
+  }
+
+  showCheck(){  
+    this.initCheckForm = true;
+  }
+
+  backToHome(){
+    this.router.navigate(['/']);
   }
 
   get nick() { return this.myForm?.get('nickName')}

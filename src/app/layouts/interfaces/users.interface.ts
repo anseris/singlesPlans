@@ -8,8 +8,7 @@ export interface IFullUser{
 
 export interface ILoginUser{
     nickName: string,
-    email: string,
-    password: string
+    email: string
 }
 
 export interface IPersonalData{

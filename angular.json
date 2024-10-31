@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "singles-plans": {
+    "singlesplans": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/singles-plans",
+            "outputPath": "dist/singlesplans",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -26,6 +26,9 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/static",
               {
                 "glob": "**/*",
                 "input": "public"
@@ -48,8 +51,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "2MB",
+                  "maximumError": "3MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -75,10 +78,10 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "singles-plans:build:production"
+              "buildTarget": "singlesplans:build:production"
             },
             "development": {
-              "buildTarget": "singles-plans:build:development"
+              "buildTarget": "singlesplans:build:development"
             }
           },
           "defaultConfiguration": "development"

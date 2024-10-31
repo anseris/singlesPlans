@@ -1,0 +1,34 @@
+<form class="flex flex-column lg:col-6 col-12 gap-3" [formGroup]="myFormMessage" (ngSubmit)="sendMessage()">
+  <input
+    class="mt-2"
+    placeholder="Teléfono"
+    [nzStatus]="initErrorForm && tel?.errors ? 'error' : ''"
+    nz-input
+    formControlName="phone"
+    type="text"
+  />
+  <div class="flex flex-column">
+    @if (initErrorForm && tel?.errors && tel?.errors?.['required']) {
+    <small class="error-form">Debe ingresar un Email</small>
+    } @if (initErrorForm && tel?.errors && (tel?.errors?.['minlength'] ||
+    tel?.errors?.['maxlength'])) {
+    <small class="error-form">debe contener 9 digitos</small>
+    }
+  </div>
+  <textarea
+    nz-input
+    placeholder="Mensaje"
+    [nzAutosize]="{ minRows: 3, maxRows: 5 }"
+    [nzStatus]="initErrorForm && mensaje?.errors ? 'error' : ''"
+    formControlName="message"
+  ></textarea>
+  <div class="flex flex-column">
+    @if (initErrorForm && mensaje?.errors && mensaje?.errors?.['required']) {
+    <small class="error-form">Debe ingresar un Email</small>
+    } @if (initErrorForm && mensaje?.errors &&(mensaje?.errors?.['minlength'] ||
+    mensaje?.errors?.['maxlength'])) {
+    <small class="error-form">entre 4 y 200 digitos</small>
+    }
+  </div>
+  <button nz-button nzType="primary">Enviar</button>
+</form>

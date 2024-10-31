@@ -1,8 +1,30 @@
- <form [formGroup]="myFormAccount">
-    <input class="mt-2" nz-input  placeholder="Titular de la cuenta" formControlName="titularCard" type="text" /> 
-    <input class="mt-2" nz-input  placeholder="IBAN"  formControlName="IBAN" type="text" />  
-    <input class="mt-2" nz-input  placeholder="code"  formControlName="code" type="text" />  
-    <nz-date-picker class="mt-2 w-full"  formControlName="caducyDate" (ngModelChange)="onChange($event)"></nz-date-picker>
-    <button nz-button nzType="primary" (click)="saveAcountForm()" >Guardar</button>
-                                
-</form>
+<div *ngIf="!showModuleEdit">
+    <div class="flex justify-content-end flex-wrap">
+        <span nz-icon nzType="edit" nzTheme="outline" (click)="changeshowModuleEdit()"></span>
+    </div>
+    <div  class="flex justify-content-start flex-wrap">
+        
+        <div class="flex align-items-center justify-content-center m-2">
+            <label class="font-bold" for="">Titular:</label> <span class="ml-2">{{titular?.value !== '' ? titular?.value: 'No hay datos'}}</span>
+        </div>
+        <div class="flex align-items-center justify-content-center m-2">
+            <label class="font-bold" for="">IBAN:</label> <span class="ml-2">{{numeroCuenta?.value !== '' ? numeroCuenta?.value: 'No hay datos'}}</span>
+        </div>
+        <div class="flex align-items-center justify-content-center m-2">
+            <label class="font-bold" for="">Fecha de caducidad:</label> <span class="ml-2">{{fechaCad?.value !== '' ? fechaCad?.value: 'No hay datos'}}</span>
+        </div>  
+        <div class="flex align-items-center justify-content-center m-2">
+            <label class="font-bold" for="">Código:</label> <span class="ml-2">{{codigo?.value !== '' ? codigo?.value: 'No hay datos'}}</span>
+        </div>   
+    </div>
+</div>
+<div *ngIf="showModuleEdit"> 
+ 
+    <form [formGroup]="myFormAccount">
+        <input class="mt-2" (keyup)="saveAcountForm()" nz-input  placeholder="Titular de la cuenta" formControlName="titularCard" type="text" /> 
+        <input class="mt-2" (keyup)="saveAcountForm()" nz-input  placeholder="IBAN"  formControlName="IBAN" type="text" />  
+        <input class="mt-2" (keyup)="saveAcountForm()" nz-input  placeholder="code"  formControlName="code" type="text" />  
+        <nz-date-picker class="mt-2 w-full"  formControlName="caducyDate" (ngModelChange)="onChange($event)"></nz-date-picker>
+                                    
+    </form>
+</div>

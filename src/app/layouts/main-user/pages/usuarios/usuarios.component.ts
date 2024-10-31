@@ -87,12 +87,12 @@ export class UsuariosComponent {
 
   
 
-  showModalEdit(data: IFullUser){
-    this.isVisibleEdit = true;
-    this.form = data.loginUser;
-    this.id = data._id || ';'
-    // this.getUser(id)
-  }
+  // showModalEdit(data: IFullUser){
+  //   this.isVisibleEdit = true;
+  //   this.form = data.loginUser;
+  //   this.id = data._id || ';'
+  //   // this.getUser(id)
+  // }
 
   handleCancelEdit(){
     this.isVisibleEdit = false;

@@ -10,6 +10,7 @@ import { GetUserService } from '../services/get-user.service';
 import { IUser } from '../../../../interfaces/login.interface';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NgIf } from '@angular/common';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 @Component({
   selector: 'app-login-data',
@@ -20,6 +21,7 @@ import { NgIf } from '@angular/common';
     NzInputModule,
     NzButtonModule,
     NzIconModule,
+    NzFormModule,
     NgIf 
   ],
   templateUrl: './login-data.component.html',
@@ -29,8 +31,8 @@ export class LoginDataComponent {
   userSession = {};  
   myFormLogin!: FormGroup;
   initErrorForm: boolean = false;
-  showModuleEdit: boolean= false
-  userLogin!: IUser
+  initCheckForm: boolean = false;
+  showModuleEdit: boolean= false;
   loginForm = model();
   id = model();
   nameAvatar = model();
@@ -39,10 +41,9 @@ export class LoginDataComponent {
     private getUserService: GetUserService,
     private fb: FormBuilder
   ){
-    this.initForms();
+   
+      this.initForms();
   }
-
-  // @Output() formChange = new EventEmitter<any>();
 
   ngOnInit(): void {
     this.getUserData()
@@ -59,23 +60,24 @@ export class LoginDataComponent {
         Validators.required,
         Validators.email
       ]),
-      password: new FormControl('',[
-        Validators.required,
-        Validators.minLength(4)
-      ])
+      // password: new FormControl('',[
+      //   Validators.required,
+      //   Validators.minLength(4)
+      // ])
     })
   }
 
   getUserData() {
+   
     this.getUserService.getUserData.subscribe({
       next: (user)=>{
-        this.userLogin = user.loginUser
+        // this.userLogin = user.loginUser
         this.myFormLogin.setValue({
           nickName: user.loginUser.nickName,
           email: user.loginUser.email,
-          password: user.loginUser.password,
+          // password: user.loginUser.password
         });
-        this.loginForm.set(this.myFormLogin.value)
+        this.loginForm.set(this.myFormLogin)
         const firstLetteAvatar = user.loginUser.nickName.substring(0, 1).toUpperCase();
         this.nameAvatar.set(firstLetteAvatar);
         this.id.set(user._id)
@@ -83,13 +85,18 @@ export class LoginDataComponent {
       
       
     })
+  
    
 
   }
 
   saveLoginForm(){
+    this.initErrorForm = true;
+    this.initCheckForm = true;
+    if(this.myFormLogin.valid && this.showModuleEdit){
 
-    this.loginForm.set(this.myFormLogin.value)
+      this.loginForm.set(this.myFormLogin)
+    }
   }
 
   changeshowModuleEdit(){

@@ -1,43 +1,58 @@
 
 <div *ngIf="!showModuleEdit">
     <div class="flex justify-content-end flex-wrap">
-        <span nz-icon nzType="edit" nzTheme="outline" (click)="changeshowModuleEdit()"></span>
+        <span nz-icon nzType="edit" nzTheme="outline" class="cursor-pointer fs-20 color-4" (click)="changeshowModuleEdit()"></span>
     </div>
-    <div  class="flex justify-content-start flex-wrap">
+    <div class="grid">
         
-        <div class="flex align-items-center justify-content-center m-2">
-            <label class="font-bold" for="">Alias:</label> <span class="ml-2">{{userLogin.nickName}}</span>
+        <div class=" m-2 col">
+            <label class="font-bold color-4" for="">Alias:</label> <span class="ml-2">{{alias?.value}}</span>
         </div>
-        <div class="flex align-items-center justify-content-center m-2">
-            <label class="font-bold" for="">email:</label> <span class="ml-2">{{userLogin.email}}</span>
+        <div class=" m-2 col">
+            <label class="font-bold color-4" for="">email:</label> <span class="ml-2">{{mail?.value}}</span>
         </div>
-        <div class="flex align-items-center justify-content-center m-2">
-            <label class="font-bold" for="">Contraseña:</label> <span class="ml-2">{{userLogin.password}}</span>
-        </div>      
     </div>
 </div>
 <div *ngIf="showModuleEdit">
-    <form [formGroup]="myFormLogin">
-        <input class="mt-2" placeholder="Alias" [nzStatus]="(initErrorForm && alias?.errors)? 'error' : ''"  nz-input formControlName="nickName" type="text" />
-        @if (initErrorForm && alias?.errors) {
-            <small class="error-form">Debe ingresar un Alias</small>
-        } 
-        <input class="mt-2" placeholder="Email" [nzStatus]="(initErrorForm && mail?.errors)? 'error' : ''"  nz-input formControlName="email" type="text" />
-        <div class="flex flex-column">
-            @if (initErrorForm && mail?.errors) {
-                <small class="error-form">Debe ingresar un Email</small>
-                <small class="error-form">El Email debe estar en formato correcto</small>
-            }
-    
+   
+    <form [formGroup]="myFormLogin" class="w-full">
+        <div class="formgrid grid">
+            <div class="field col">
+                <label  class="" for=""> Alias</label>
+                <nz-form-item >
+                    <nz-input-group [nzStatus]="(initErrorForm && alias?.errors)? 'error' : ''" nzPrefixIcon="user">
+                        <input  nz-input (keyup)="saveLoginForm()"  placeholder="Nick" formControlName="nickName" type="text" /> 
+                        @if (initCheckForm && !alias?.errors) {
+                            <span nz-icon nzType="check" class="color-3" nzTheme="outline"></span>  
+                        }   
+                    </nz-input-group>
+                    @if (initErrorForm && alias?.errors) {
+                        <small class="color-red"><span nz-icon nzType="warning" class="mr-2" nzTheme="outline"></span>Debe ingresar un Alias</small>
+                    }
+                </nz-form-item>
+            </div>
+            <div class="field col">
+                <label  class="" for=""> Email</label>
+                <nz-form-item class="w-full">
+                    <nz-input-group [nzStatus]="(initErrorForm && mail?.errors)? 'error' : ''" class="color-4" nzPrefixIcon="mail">
+                        <input type="text" (keyup)="saveLoginForm()" nz-input formControlName="email" placeholder="Email" /> 
+                        @if (initCheckForm && !mail?.errors) {
+                        <span nz-icon nzType="check" class="color-3" nzTheme="outline"></span>  
+                        }                   
+                                        
+                    </nz-input-group>
+                    <div class="">
+                        @if (initErrorForm && mail?.errors) {
+                            <small class="color-red"><span nz-icon nzType="warning" class="mr-2" nzTheme="outline"></span>Debe ingresar un Email</small>
+                            <small class="color-red"><span nz-icon nzType="warning" class="mr-2" nzTheme="outline"></span>El Email debe estar en formato correcto</small>
+                        }
+                    </div>
+                </nz-form-item>
+            </div>
         </div>
-        <input class="mt-2" placeholder="Contraseña" [nzStatus]="(initErrorForm && pass?.errors)? 'error' : ''"  nz-input formControlName="password" type="text" />
-        <div class="flex flex-column">
-            @if (initErrorForm && pass?.errors) {
-                <small class="error-form">Debe ingresar una contraseña</small>
-                <small class="error-form">La contraseña tiene que tener minimo 4 digitos</small>
-            }
-        </div>
-        <button nz-button nzType="primary" (click)="saveLoginForm()" >Guardar</button>
-    
     </form>
+
+    
+    
+
 </div>

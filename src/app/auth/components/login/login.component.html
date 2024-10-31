@@ -1,19 +1,37 @@
-<div class="flex w-screen h-screen justify-content-center align-items-center">
-    <div class="cont border-round-md bg-white p-5">
-        <form nz-form [formGroup]="myForm" class="login-form" (ngSubmit)="login()">
+<div class="flex justify-content-center w-full bg-1 h-full">
+  
+  <div class="flex justify-content-center align-items-center w-6 bg-1 h-full" >
+   
+    <div class="w-7">
+      <div class="flex justify-content-center mt-2">
+        <img [attr.src]="'assets/img/logo_medio.png'" alt="">
+      </div>
+      <div class="flex justify-content-center mt-2 color-4 fs-30" >
+        <p>Inicia sesión o crea una cuenta</p>
+      </div>
+        <form nz-form [formGroup]="myForm" class="fs-20 color-4" (ngSubmit)="login()">
             <nz-form-item>
-                <nz-input-group [nzStatus]="(initErrorForm && mail?.errors)? 'error' : ''" nzPrefixIcon="user">
-                  <input type="text" nz-input formControlName="email" placeholder="email" />
+                <nz-input-group [nzStatus]="(initErrorForm && mail?.errors)? 'error' : ''" class="color-4" nzPrefixIcon="mail">
+                  <input type="text" (keyup)="showCheck()" nz-input formControlName="email" placeholder="email" /> 
+                  @if (initCheckForm && !mail?.errors) {
+                    <span nz-icon nzType="check" class="color-3" nzTheme="outline"></span>  
+                  }                   
+                                    
                 </nz-input-group>
                 <div class="flex flex-column">
                     @if (initErrorForm && mail?.errors) {
-                        <small class="error-form">Debe ingresar un Email</small>
-                        <small class="error-form">El Email debe estar en formato correcto</small>
+                        <small class="color-red"><span nz-icon nzType="warning" class="mr-2" nzTheme="outline"></span>Debe ingresar un Email</small>
+                        <small class="color-red"><span nz-icon nzType="warning" class="mr-2" nzTheme="outline"></span>El Email debe estar en formato correcto</small>
                     }
-                </div>
+                </div><div class="flex flex-column">
+                  @if (initErrorEmailForm && mail?.errors) {
+                      <small class="color-red"><span nz-icon nzType="warning" class="mr-2" nzTheme="outline"></span>Debe ingresar un Email</small>
+                      <small class="color-red"><span nz-icon nzType="warning" class="mr-2" nzTheme="outline"></span>El Email debe estar en formato correcto</small>
+                  }
+              </div>
             </nz-form-item>
             <nz-form-item>
-                <nz-input-group [nzStatus]="(initErrorForm && mail?.errors)? 'error' : ''" nzPrefixIcon="lock" [nzSuffix]="suffixTemplate">
+                <nz-input-group [nzStatus]="(initErrorForm && pass?.errors)? 'error' : ''" nzPrefixIcon="lock" [nzSuffix]="suffixTemplate">
                   <input [type]="passwordVisible ? 'text' : 'password'" nz-input formControlName="password" placeholder="Password" />
                 </nz-input-group>
                 <ng-template #suffixTemplate>
@@ -23,26 +41,40 @@
                       (click)="passwordVisible = !passwordVisible"
                     ></span>
                   </ng-template>
+                  
                   <div class="flex flex-column">
                     @if (initErrorForm && pass?.errors) {
-                        <small class="error-form">Debe ingresar una contraseña</small>
-                        <small class="error-form">La contraseña tiene que tener minimo 4 digitos</small>
+                        <small class="color-red"><span nz-icon nzType="warning" class="mr-2" nzTheme="outline"></span>Debe ingresar una contraseña</small>
+                        <small class="color-red"><span nz-icon nzType="warning" class="mr-2" nzTheme="outline"></span>La contraseña tiene que tener minimo 4 digitos</small>
                     }
                 </div> 
             </nz-form-item>
-            <div nz-row class="login-form-margin">
-              <!-- <div nz-col [nzSpan]="12">
-                <label nz-checkbox formControlName="remember">
-                  <span>Remember me</span>
-                </label>
-              </div> -->
-              <div nz-col [nzSpan]="12">
-                <a class="login-form-forgot">Forgot password</a>
+            
+            <div class="flex justify-content-center mt-2">
+              <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Iniciar Session</button>
+            </div>
+            <div class="flex justify-content-center mt-2">
+              O
+            </div>
+            <div class="flex justify-content-center mt-2">
+              <button nz-button class="ant-btn-secundary" (click)="goToRegistro()">Registrarse</button>
+            </div>
+            <div nz-row class="flex justify-content-between flex-wrap mt-4">
+              <div nz-col [nzSpan]="12" class="flex align-items-start justify-content-start">
+                <a class="login-form-forgot color-4" (click)="recoverPassword()">¿Has olvidado la contraseña?</a>
+              </div>
+              <div nz-col [nzSpan]="12" class="flex align-items-end justify-content-end">
+                <a class="login-form-forgot color-4" (click)="backToHome()">Volver a Inicio <span nz-icon nzType="arrow-right" class="ml-3" nzTheme="outline"></span></a>
               </div>
             </div>
-            <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
-            Or
-            <a>register now!</a>
+            
           </form>
     </div>
+  </div>
+  <div class="flex justify-content-center align-items-center w-6 bg-4">
+    <div class="cont-img-login">
+      <img [attr.src]="'assets/img/logo_oscuro.png'" class="img-login" alt="">
+    </div>
+    
+  </div>
 </div>

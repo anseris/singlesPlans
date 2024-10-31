@@ -5,6 +5,8 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { GetUserService } from '../services/get-user.service';
+import { NgIf } from '@angular/common';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @Component({
   selector: 'app-acount-data',
@@ -15,7 +17,9 @@ import { GetUserService } from '../services/get-user.service';
     NzInputModule,
     NzButtonModule,
     NzDatePickerModule,
-    NzRadioModule
+    NzRadioModule,
+    NzIconModule,
+    NgIf 
   ],
   templateUrl: './acount-data.component.html',
   styleUrl: './acount-data.component.scss'
@@ -25,6 +29,7 @@ export class AcountDataComponent {
   userSession = {};  
   myFormAccount!: FormGroup;
   initErrorForm: boolean = false;
+  showModuleEdit: boolean = false;
   acountForm = model()
 
   constructor(
@@ -33,8 +38,6 @@ export class AcountDataComponent {
   ){
     this.initForms();
   }
-
-  // @Output() formChange = new EventEmitter<any>();
 
   ngOnInit(): void {
     this.getUserData()
@@ -53,6 +56,7 @@ export class AcountDataComponent {
 
   onChange(result: Date): void {
     console.log('onChange: ', result);
+    this.saveAcountForm()
   }
 
   getUserData() {
@@ -64,7 +68,7 @@ export class AcountDataComponent {
           caducyDate: user.accountData?.caducyDate,
           code: user.accountData?.code
         });
-        this.acountForm.set(this.myFormAccount.value)
+        this.acountForm.set(this.myFormAccount)
       }
       
       
@@ -74,8 +78,13 @@ export class AcountDataComponent {
   }
 
   saveAcountForm(){
+    if(this.myFormAccount.valid && this.showModuleEdit){
+      this.acountForm.set(this.myFormAccount);
+    }
+  }
 
-    this.acountForm.set(this.myFormAccount.value)
+  changeshowModuleEdit(){
+    this.showModuleEdit = true
   }
 
  

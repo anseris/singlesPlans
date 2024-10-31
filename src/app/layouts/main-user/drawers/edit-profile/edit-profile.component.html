@@ -1,6 +1,6 @@
  
     <nz-drawer [nzVisible]="visible" [nzTitle]="'Perfil'" [nzWidth]="640" [nzClosable]="false" (nzOnClose)="close()">
-        <ng-container *nzDrawerContent>
+        <ng-container *nzDrawerContent class="bg-1">
             <app-avatar-edit></app-avatar-edit>
             <nz-collapse [nzExpandIconPosition]="'start'">
                 @for (panel of panels; track panel) {

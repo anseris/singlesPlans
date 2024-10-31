@@ -5,4 +5,27 @@
 :host ::ng-deep .avatar-uploader > .ant-upload {
   width: 128px;
   height: 128px;
+  border: 5px solid #E2F1E7;
 }
+.ant-avatar {
+  position: relative;
+  overflow: hidden;
+  color: #E2F1E7;
+  background: transparent;
+  width: 32px;
+  line-height: 32px;
+  border-radius: 50%;
+}
+
+.ant-collapse {
+  border: 3px solid #E2F1E7;
+  background-color: transparent;
+  color: #E2F1E7;
+}
+
+.ant-collapse-content {
+  color: #629584;
+  background-color: transparent;
+  border-top: 1px solid #d9d9d9;
+}
+

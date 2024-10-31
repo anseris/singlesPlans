@@ -1,1 +1,302 @@
 /* You can add global styles to this file, and also import other style files */
+.color-1{
+    color: #243642;
+}
+
+.color-2{
+    color: #387478;
+}
+
+.color-3{
+    color: #629584;
+}
+
+.color-4{
+    color: #E2F1E7;
+}
+
+.color-red{
+    color: red;
+}
+
+.bg-1{
+    background-color: #243642;
+}
+
+.bg-2{
+    background-color: #387478;
+}
+
+.bg-3{
+    background-color: #629584;
+}
+
+.bg-4{
+    background-color: #E2F1E7;
+}
+
+.fs-14{
+    font-size: 14px;
+}
+.fs-16{
+    font-size: 16px;
+}
+
+.fs-18{
+    font-size: 18px;
+}
+
+.fs-20{
+    font-size: 20px;
+}
+
+.fs-24{
+    font-size: 24px;
+}
+
+.fs-30{
+    font-size: 30px;
+}
+
+.label-input {
+    display: block;
+}
+
+.field-input {
+    height: 6.2rem;
+    border-radius: 1rem;
+    padding: 0;
+    position: relative;
+    border: 1px solid #9DA0A4;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+}
+
+.legend-input{
+    font-weight: 400;
+    color: #FFFFFF;
+    margin: 0;
+    margin-left: 1.4rem;
+    padding: 0 0.8rem;
+}
+
+.div-input{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.input{
+    font-size: 1.6rem;
+    line-height: 2.5rem;
+    height: 3rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding-left: 2.2rem;
+    padding-right: 6rem;
+    color: #CACDD2;
+    caret-color: #CACDD2; 
+}
+
+.ant-input-affix-wrapper {
+    width: 100%;
+    min-width: 0;
+    padding: 4px 11px;
+    font-size: 14px;
+    line-height: 2.5715;
+    background-color: transparent;
+    background-image: none;
+    border-radius: 17px;
+    transition: all .3s;
+    display: inline-flex;
+    border: solid 2px #E2F1E7 ;
+    color:#E2F1E7;
+}
+
+.ant-input-group {
+    width: 100%;
+    min-width: 0;
+    padding: 4px 11px;
+    font-size: 14px;
+    line-height: 2.5715;
+    background-color: transparent;
+    background-image: none;
+    border-radius: 17px;
+    transition: all .3s;
+    display: inline-flex;
+    border: solid 2px #E2F1E7 ;
+    color:#E2F1E7;
+}
+
+.ant-input, .ant-input-number-affix-wrapper {
+    background-color:transparent;
+    background-image: none;
+    min-width: 0;
+}
+
+.ant-input {
+    position: relative;
+    display: inline-block;
+    width: 90%;
+    padding: 4px 11px;
+    color: #E2F1E7;
+    font-size: 14px;
+    border-radius: 2px;
+    transition: all .3s;
+    margin-left: 10px;
+    border:none;
+}
+
+.ant-picker {
+    width: 100%;
+    min-width: 0;
+    padding: 4px 11px;
+    font-size: 14px;
+    line-height: 2.5715;
+    background-color: transparent;
+    background-image: none;
+    border-radius: 17px;
+    transition: all .3s;
+    display: inline-flex;
+    border: solid 2px #E2F1E7 ;
+    color:#E2F1E7;
+}
+
+.ant-picker-input > input {
+    color: #E2F1E7;
+    padding: 4px 11px;
+}
+
+.ant-picker-suffix {
+    color: #E2F1E7;
+}
+
+.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper, .ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:hover {
+    background: transparent; 
+    border-color: #ff4d4f;
+}
+
+.ant-input-focused,.ant-input:focus {
+    border-color: #243642;
+}
+
+
+.ant-btn-primary:focus {
+    width: 60%;
+    color: #E2F1E7;
+    border: solid 2px #E2F1E7;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+    background-image: linear-gradient(to right, #629584, #387478);
+    height: 45px;
+    font-size: 20px;
+    border-radius: 35px;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+}
+
+.ant-btn-primary {
+    width: 60%;
+    color: #E2F1E7;
+    border: solid 2px #E2F1E7;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+    background-image: linear-gradient(to right, #629584, #387478);
+    height: 45px;
+    font-size: 20px;
+    border-radius: 35px;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+}
+
+.ant-btn-primary:hover {
+    width: 60%;
+    color: #E2F1E7;
+    border: solid 2px #E2F1E7;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+    background-image: linear-gradient(to right, #243642, #387478);
+    height: 45px;
+    font-size: 20px;
+    border-radius: 35px;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+}
+
+
+
+.ant-btn-secundary {
+    width: 60%;
+    color: #E2F1E7;
+    border: solid 2px #E2F1E7;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+    background-image: linear-gradient(to right, #243642, #387478);
+    height: 45px;
+    font-size: 20px;
+    border-radius: 35px;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+}
+
+.ant-btn-secundary:hover {
+    width: 60%;
+    color: #E2F1E7;
+    border: solid 2px #E2F1E7;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+    background-image: linear-gradient(to right, #629584, #387478);
+    height: 45px;
+    font-size: 20px;
+    border-radius: 35px;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+}
+
+.cont-img-login{
+    width: 300px;
+    height: 300px;
+}
+
+.img-login{
+    width: 100%;
+}
+.ant-message .anticon {
+    position: relative;
+    top: 1px;
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+.ant-message-notice-content {
+    display: inline-block;
+    padding: 10px 16px;
+    background: #fff;
+    border-radius: 2px;
+    pointer-events: all;
+    font-size: 20px;
+}
+.ant-drawer-content {
+    background-color: #243642;
+  }
+
+.ant-avatar {
+color: #E2F1E7;
+background: transparent;
+}
+
+.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+color: #E2F1E7;
+}
+
+.ant-collapse-content {
+    color: #629584;
+    background-color: transparent;
+    border-top: 1px solid #d9d9d9;
+  }

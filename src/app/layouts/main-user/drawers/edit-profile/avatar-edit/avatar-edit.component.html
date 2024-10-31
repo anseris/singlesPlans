@@ -1,16 +1,77 @@
-<nz-upload
-class="avatar-uploader"
-nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-nzName="avatar"
-nzListType="picture-card"
-[nzShowUploadList]="false"
-[nzBeforeUpload]="beforeUpload" 
-(nzChange)="handleChange($event)"
->
-@if (!avatarUrl) {
-    <span class="upload-icon" nz-icon nzType="loading ? 'loading' : 'plus'"></span>
-    <div class="ant-upload-text">Upload</div>
-} @else {
-    <img [src]="avatarUrl" style="width: 100%" />
-}
-</nz-upload>
+
+
+
+<div class="input-file">
+    
+    <!-- <input class="avatar-file" type="file" (change)="subirArchivo($event)"> -->
+    <!-- <div class="custon-avatar">+</div> -->
+</div>
+<div class="flex justify-content-center align-items-center flex-wrap w-full ">
+    @if (hasImage) {
+        <div class="flex justify-content-center col-6">
+            <img class="image-upload" [src]="imageUrl" alt="''">
+        </div>
+        <div class="flex justify-content-center col-6  w-full mb-3">
+            <button class="mt-2" nz-button nzType="primary" (click)="openModal()">
+                <span class="icon-edit" nz-icon nzType="edit" nzTheme="outline" (click)="openModal()"></span>
+                Editar imagen
+            </button>
+        </div>
+    } @else {
+        <div class="flex justify-content-center col-6">
+            <nz-avatar class="image-upload" [nzShape]="'square'" [nzSize]="300" [nzIcon]="'user'">
+            </nz-avatar>
+        </div>
+        <div class="flex justify-content-center col-6  w-full mb-3">        
+            <button class="mt-2" nz-button nzType="primary" (click)="openModal()">
+                <span class="icon-edit" nz-icon nzType="edit" nzTheme="outline" (click)="openModal()"></span>
+                Editar imagen
+            </button>
+        </div>
+    }
+   
+   
+</div>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Subir Imagen" (nzOnCancel)="handleCancel()">
+    <div *nzModalContent class="flex justify-content-center">
+        @if (hasImage) {
+            <div class="flex justify-content-center w-full h-full">
+                <img class="image-upload" [src]="imageUrl" alt="''">
+            </div>            
+        } @else {
+            <div class="icon-upload flex justify-content-center">
+                <span nz-icon nzType="cloud-upload" nzTheme="outline"></span>
+            </div>
+        }
+    </div>
+    <div *nzModalFooter>
+        <div class="flex justify-content-between flex-wrap">
+            <div class="flex align-items-center justify-content-center bg-primary font-bold border-round m-2">
+                <input class="avatar-file" id="fileAvatar" type="file" (change)="subirArchivo($event)">
+                <label for="fileAvatar" class="custon-avatar-file">
+                    <span class="mr-3" nz-icon nzType="cloud-upload" nzTheme="outline"></span>
+                    Elige Imagen
+                </label>
+            </div>
+            @if (fileChoosed) {
+                <div class="flex align-items-center justify-content-center  bg-primary font-bold border-round m-2">
+                    <button nz-button (click)="saveImage()" nzType="primary">
+                        <span class="mr-3" nz-icon nzType="save" nzTheme="outline"></span>
+                        Guardar
+                    </button>
+                </div> 
+            } @else {
+                <div class="flex align-items-center justify-content-center  bg-primary font-bold border-round m-2">
+                    <button nz-button (click)="handleCancel()" nzType="primary">Cerrar</button>
+                </div>
+            }
+           
+
+        </div>
+        
+      <!-- <button nz-button nzType="primary">Custom Submit</button> -->
+    </div>
+  </nz-modal>
+<!-- <img [src]="foto.url" alt="''"> -->
+
