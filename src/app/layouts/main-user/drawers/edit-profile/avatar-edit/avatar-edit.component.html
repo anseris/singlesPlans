@@ -46,32 +46,28 @@
         }
     </div>
     <div *nzModalFooter>
-        <div class="flex justify-content-between flex-wrap">
-            <div class="flex align-items-center justify-content-center bg-primary font-bold border-round m-2">
+        <div class="formgrid grid">
+            <div class="field col-6">
                 <input class="avatar-file" id="fileAvatar" type="file" (change)="subirArchivo($event)">
-                <label for="fileAvatar" class="custon-avatar-file">
-                    <span class="mr-3" nz-icon nzType="cloud-upload" nzTheme="outline"></span>
+                <label for="fileAvatar" class="ant-btn-secundary w-full flex justify-content-center align-items-center">
                     Elige Imagen
                 </label>
             </div>
             @if (fileChoosed) {
-                <div class="flex align-items-center justify-content-center  bg-primary font-bold border-round m-2">
-                    <button nz-button (click)="saveImage()" nzType="primary">
-                        <span class="mr-3" nz-icon nzType="save" nzTheme="outline"></span>
+                <div class="field col-6">
+                    <button nz-button (click)="saveImage()" nzType="primary" class="w-full">
+                    
                         Guardar
                     </button>
                 </div> 
             } @else {
-                <div class="flex align-items-center justify-content-center  bg-primary font-bold border-round m-2">
-                    <button nz-button (click)="handleCancel()" nzType="primary">Cerrar</button>
+                <div class="field col-6">
+                    <button nz-button (click)="handleCancel()" nzType="primary" class="w-full">Cerrar</button>
                 </div>
             }
            
 
         </div>
-        
-      <!-- <button nz-button nzType="primary">Custom Submit</button> -->
     </div>
   </nz-modal>
-<!-- <img [src]="foto.url" alt="''"> -->
 

@@ -25,13 +25,19 @@
             </li>
           </ul>
         </li>
-        <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
-          <ul>
-            <li nz-menu-item nzMatchRouter>
-              <a>Basic Form</a>
-            </li>
-          </ul>
-        </li>
+        @if (isAdmin) {
+          <li nz-submenu nzOpen nzTitle="Editar Viaje" nzIcon="form">
+            <ul>
+              <li nz-menu-item nzMatchRouter>
+                <a routerLink="/logado/admin-tarjetas">Tarjetas</a>
+              </li>
+              <li nz-menu-item nzMatchRouter>
+                <a>Detalles Viaje</a>
+              </li>
+            </ul>
+          </li>
+        }
+        
       </ul>
     </nz-sider>
     <nz-layout>

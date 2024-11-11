@@ -1,30 +1,54 @@
 <div *ngIf="!showModuleEdit">
     <div class="flex justify-content-end flex-wrap">
-        <span nz-icon nzType="edit" nzTheme="outline" (click)="changeshowModuleEdit()"></span>
+        <span nz-icon nzType="edit" class="cursor-pointer fs-20 color-4" nzTheme="outline" (click)="changeshowModuleEdit()"></span>
     </div>
-    <div  class="flex justify-content-start flex-wrap">
+    <div class="grid">
         
-        <div class="flex align-items-center justify-content-center m-2">
-            <label class="font-bold" for="">Titular:</label> <span class="ml-2">{{titular?.value !== '' ? titular?.value: 'No hay datos'}}</span>
+        <div class="col-6">
+            <label class="font-bold color-4" for="">Titular:</label> <span class="ml-2">{{titular?.value !== '' ? titular?.value: 'No hay datos'}}</span>
         </div>
-        <div class="flex align-items-center justify-content-center m-2">
-            <label class="font-bold" for="">IBAN:</label> <span class="ml-2">{{numeroCuenta?.value !== '' ? numeroCuenta?.value: 'No hay datos'}}</span>
+        <div class="col-6">
+            <label class="font-bold color-4" for="">IBAN:</label> <span class="ml-2">{{numeroCuenta?.value !== '' ? numeroCuenta?.value: 'No hay datos'}}</span>
         </div>
-        <div class="flex align-items-center justify-content-center m-2">
-            <label class="font-bold" for="">Fecha de caducidad:</label> <span class="ml-2">{{fechaCad?.value !== '' ? fechaCad?.value: 'No hay datos'}}</span>
+        <div class="col-6">
+            <label class="font-bold color-4" for="">Fecha de caducidad:</label> <span class="ml-2">{{fechaCad?.value !== '' ? fechaCad?.value: 'No hay datos'}}</span>
         </div>  
-        <div class="flex align-items-center justify-content-center m-2">
-            <label class="font-bold" for="">Código:</label> <span class="ml-2">{{codigo?.value !== '' ? codigo?.value: 'No hay datos'}}</span>
+        <div class="col-6">
+            <label class="font-bold color-4" for="">Código:</label> <span class="ml-2">{{codigo?.value !== '' ? codigo?.value: 'No hay datos'}}</span>
         </div>   
     </div>
-</div>
-<div *ngIf="showModuleEdit"> 
- 
+</div> 
+<div *ngIf="showModuleEdit">
     <form [formGroup]="myFormAccount">
-        <input class="mt-2" (keyup)="saveAcountForm()" nz-input  placeholder="Titular de la cuenta" formControlName="titularCard" type="text" /> 
-        <input class="mt-2" (keyup)="saveAcountForm()" nz-input  placeholder="IBAN"  formControlName="IBAN" type="text" />  
-        <input class="mt-2" (keyup)="saveAcountForm()" nz-input  placeholder="code"  formControlName="code" type="text" />  
-        <nz-date-picker class="mt-2 w-full"  formControlName="caducyDate" (ngModelChange)="onChange($event)"></nz-date-picker>
-                                    
-    </form>
+        <div class="formgrid grid">
+            <div class="field col-6">                
+                <label  class="" for="">Titular de la cuenta</label>
+                <nz-form-item >
+                    <nz-input-group>
+                        <input (keyup)="saveAcountForm()" nz-input  placeholder="Titular de la cuenta" formControlName="titularCard" type="text" />                         
+                    </nz-input-group>
+                </nz-form-item>
+            </div>
+            <div class="field col-6">
+                <label  class="" for="">IBAN</label>
+                <nz-form-item >
+                    <nz-input-group>
+                        <input  nz-input  placeholder="IBAN"  formControlName="IBAN" type="text" />                         
+                    </nz-input-group>
+                </nz-form-item> 
+            </div>
+            <div class="field col-6">
+                <label  class="" for="">Fecha de Caducidad</label>
+                <nz-date-picker class="w-full"  formControlName="caducyDate" (ngModelChange)="onChange($event)"></nz-date-picker>
+            </div>
+            <div class="field col-6">
+                <label  class="" for="">Código</label>
+                <nz-form-item >
+                    <nz-input-group>
+                        <input (keyup)="saveAcountForm()" nz-input  placeholder="code"  formControlName="code" type="text" />                         
+                    </nz-input-group>
+                </nz-form-item>
+            </div>
+        </div>
+   </form>
 </div>

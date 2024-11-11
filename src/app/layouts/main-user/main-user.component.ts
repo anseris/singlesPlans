@@ -38,6 +38,7 @@ export class MainUserComponent {
   id: string = '';
   nicKname: string = '';
   nicKnameAvatar: string = "";
+  isAdmin: boolean = false
 
 
     
@@ -58,6 +59,7 @@ export class MainUserComponent {
         this.id = session.user._id || '';
         this.nicKname = session.user.nickName;
         this.nicKnameAvatar = session.user.nickName.substring(0, 1).toUpperCase();
+        this.isAdmin = session.user.isAdmin || false;
       }
     };
   }

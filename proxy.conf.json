@@ -28,5 +28,18 @@
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true
+    },
+    "/guardar-textarea": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/obtener-textarea": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
     }
+
 }

@@ -1,0 +1,118 @@
+<div class="formgrid grid">
+  <form [formGroup]="myForm" (ngSubmit)="sendMessage()">
+    <div class="field col-4">
+      <label for="">Imagen</label>
+      <input
+        class="mt-2"
+        placeholder="Imagen"
+        nz-input
+        formControlName="imagen"
+        type="file"
+      />
+    </div>
+    <div class="field col-4">      
+      <label for="">Título</label>
+      <input
+        class="mt-2"
+        placeholder="Título"
+        nz-input
+        formControlName="titulo"
+        type="text"
+      />
+    </div>
+    <div class="field col-4">
+      <label for="">Sub título</label>
+      <input
+        class="mt-2"
+        placeholder="Sub título"
+        nz-input
+        formControlName="subtitulo"
+        type="text"
+      />
+    </div>
+    <div class="field col-12">
+      <label for="">Descripción</label>
+      <quill-editor  formControlName="descripcion"></quill-editor>
+    </div>
+    <div class="field col-4">
+      <label for="">Destino</label>
+      <input
+        class="mt-2"
+        placeholder="Destino"
+        nz-input
+        formControlName="destino"
+        type="text"
+      />
+    </div>
+    <div class="field col-4">
+      <label for="">Precio</label>
+      <input
+        class="mt-2"
+        placeholder="Precio"
+        nz-input
+        formControlName="precio"
+        type="number"
+      />
+    </div>
+    <div class="field col-4">
+      <label for="">Fecha de Inicio</label>
+      <nz-form-control [nzSm]="16" [nzXs]="24">
+        <nz-date-picker formControlName="fechainicio"></nz-date-picker>
+      </nz-form-control>
+    </div>
+    <div class="field col-4">
+      <label for="">Fecha de Fin</label>
+      <nz-form-control [nzSm]="16" [nzXs]="24">
+        <nz-date-picker formControlName="fechafin"></nz-date-picker>
+      </nz-form-control>
+    </div>
+    <div class="field col-4">
+      <label for="">Mes</label>
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="mes" formControlName="mes">
+        @for (mes of meses; track $index) {
+          <nz-option [nzLabel]="mes" [nzValue]="mes"></nz-option>
+        }
+      </nz-select>
+    </div>
+    <div class="field col-4">
+      <label for="">Franja de edad</label>
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a person" formControlName="franjaedad">
+        @for (franja of franjaEdad; track $index) {
+          <nz-option [nzLabel]="franja" [nzValue]="franja"></nz-option>
+        }
+      </nz-select>
+    </div>  
+    <div class="field col-4">
+      <label for="">Tipo de viaje</label>
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a person" formControlName="tipoviaje">
+        @for (tipo of tipoViaje; track $index) {
+          <nz-option [nzLabel]="tipo" [nzValue]="tipo"></nz-option>
+        }
+      </nz-select>
+    </div>
+    <div class="field col-4">
+      <label for="">Periodo</label>
+      <input
+        class="mt-2"
+        placeholder="Periodo"
+        nz-input
+        formControlName="periodo"
+        type="text"
+      />
+    </div>
+    
+  
+    <button nz-button nzType="primary">Enviar</button>
+  </form> 
+
+</div>
+
+
+
+
+
+
+
+
+
+

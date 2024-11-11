@@ -15,6 +15,7 @@ export interface IUser{
     nickName: string,
     email: string,
     password: string,
+    isAdmin?: boolean
 }
 
 export interface IUserSession{

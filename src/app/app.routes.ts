@@ -5,6 +5,7 @@ import { InicioComponent } from './layouts/main/pages/inicio/inicio.component';
 import { UsuariosComponent } from './layouts/main-user/pages/usuarios/usuarios.component';
 import { loginGuard } from './layouts/guards/login.guard';
 import { MensajeSimpleComponent } from './layouts/main-user/pages/mensaje-simple/mensaje-simple.component';
+import { TarjetasComponent } from './layouts/main-user/pages/admin/tarjetas/tarjetas.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/inicio' },
@@ -23,6 +24,7 @@ export const routes: Routes = [
         { path: 'inicio', component: InicioComponent },
         { path: 'usuarios',component: UsuariosComponent },
         { path: 'mensaje-simple',component: MensajeSimpleComponent },
+        { path: 'admin-tarjetas',component: TarjetasComponent },
         // { path: 'logado/inicio', loadChildren: () => import('./layouts/main-user/pages/inicio/inicio.routes').then(m => m.INICIO_ROUTES_LOGGED) },
         // { path: 'logado/usuarios', loadChildren: () => import('./layouts/main-user/pages/usuarios/usuarios.routes').then(m => m.USUARIOS_ROUTES_LOGADO) }
     ],

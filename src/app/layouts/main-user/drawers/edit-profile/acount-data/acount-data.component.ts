@@ -7,6 +7,7 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { GetUserService } from '../services/get-user.service';
 import { NgIf } from '@angular/common';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 @Component({
   selector: 'app-acount-data',
@@ -19,6 +20,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     NzDatePickerModule,
     NzRadioModule,
     NzIconModule,
+    NzFormModule,
     NgIf 
   ],
   templateUrl: './acount-data.component.html',
